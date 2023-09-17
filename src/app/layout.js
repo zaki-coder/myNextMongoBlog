@@ -18,17 +18,17 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-        <ThemeContextProvider>
-          <ThemeProvider>
-            <div className='container'>
-              <div className='wrapper'>
-                <Navbar />
-                {children}
-                <Footer />
+          <ThemeContextProvider>
+            <ThemeProvider>
+              <div className='container'>
+                <div className='wrapper'>
+                  <Navbar />
+                  {children}
+                  <Footer />
+                </div>
               </div>
-            </div>
-          </ThemeProvider>
-        </ThemeContextProvider>
+            </ThemeProvider>
+          </ThemeContextProvider>
         </AuthProvider>
       </body>
     </html>

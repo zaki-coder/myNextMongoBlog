@@ -12,13 +12,9 @@ const AuthLinks = () => {
 
     const router = useRouter();
 
-    if(status === "unauthenticated") {
-        router.push("/login");
-    }
-
     // const status = "authenticated";
     return <>
-        {status === "notauthenticated" ? (
+        {status === "unauthenticated" ? (
             <Link href="/login" className={styles.link}>Login</Link>
         ): (
             <>
