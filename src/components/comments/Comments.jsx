@@ -38,7 +38,6 @@ const Comments = ({ postSlug }) => {
     mutate();
   };
 
-
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>
@@ -60,7 +59,7 @@ const Comments = ({ postSlug }) => {
         {isLoading
           ? "loading"
           : data?.map((item) => (
-              <div className={styles.comment} key={item.id}>
+              <div className={styles.comment} key={item._id}>
                 <div className={styles.user}>
                   {item?.user?.image && (
                     <Image
