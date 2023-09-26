@@ -24,7 +24,6 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
@@ -48,6 +47,7 @@ model User {
   sessions      Session[]
   Post          Post[]
   Comment       Comment[]
+  isAdmin       Boolean   @default(false)
 }
 
 model VerificationToken {
@@ -79,6 +79,7 @@ model Post {
   userEmail String
   user      User      @relation(fields: [userEmail], references: [email])
   comments  Comment[]
+ 
 }
 
 model Comment {

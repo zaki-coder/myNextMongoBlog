@@ -52,6 +52,7 @@ export const GET = async (req) => {
 export const POST = async (req) => {
   const session = await getAuthSession();
 
+
   if (!session) {
     return new NextResponse(
       JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
@@ -63,8 +64,12 @@ export const POST = async (req) => {
     const post = await prisma.post.create({
       data: { ...body, userEmail: session.user.email },
     });
+    if(session.user.isAdmin){
+      return new NextResponse(JSON.stringify(post, { status: 201 }));
+    } else {
+      return new NextResponse(JSON.stringify({message: "You are not allowed to write an article",  status: 405 }));
+    }
 
-    return new NextResponse(JSON.stringify(post, { status: 200 }));
   } catch (err) {
     console.log(err);
     return new NextResponse(
